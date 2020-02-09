@@ -18,7 +18,6 @@ class AppleTest extends \Codeception\Test\Unit
     public function testCommonTest()
     {
         $apple = new Apple('green');
-        $apple->save();
         self::assertEquals('green', $apple->color);
 
 
@@ -30,9 +29,6 @@ class AppleTest extends \Codeception\Test\Unit
         $apple->fallToGround(); // упасть на землю
         $apple->eat(25); // откусить четверть яблока
         self::assertEquals(0.75, $apple->size);
-        $apple->delete();
-
-
     }
 
 

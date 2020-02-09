@@ -19,7 +19,8 @@ class AppleSearch extends Apple
         return [
             [['id'], 'integer'],
             [['created_at', 'falled_at'], 'match', 'pattern' => "/\d{4}\-\d{2}\-\d{2}\s\d{2}\:\d{2}\:\d{2}/"],
-            [['color', 'status'], 'safe'],
+            [['color'], 'string'],
+            [['status'], 'integer'],
             [['size'], 'number'],
         ];
     }
@@ -53,7 +54,7 @@ class AppleSearch extends Apple
 
 
         if (!$this->validate()) {
-            // uncomment the following line if you do not want to any records when validation fails
+            // uncomment the following line if you do not want to see any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
