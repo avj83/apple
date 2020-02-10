@@ -17,6 +17,8 @@ use yii\base\Exception;
  */
 class Apple extends \yii\db\ActiveRecord
 {
+    const SPOIL_TIME_SEC = 5*3600;
+
     const STATUS_ON_TREE = 1;
     const STATUS_FALLED_TO_GROUND = 2;
     const STATUS_SPOILED = 3;
@@ -62,7 +64,7 @@ class Apple extends \yii\db\ActiveRecord
 
     public function afterFind()
     {
-        if ($this->status == static::STATUS_FALLED_TO_GROUND && time() - $this->falled_at > 5*3600){
+        if ($this->status == static::STATUS_FALLED_TO_GROUND && time() - $this->falled_at > static::SPOIL_TIME_SEC){
             $this->status = static::STATUS_SPOILED;
         }
         parent::afterFind();
